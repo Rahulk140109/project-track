@@ -1,0 +1,8 @@
+- content_for :title, "New Project"
+
+.section-container.mx-auto.max-w-4xl.px-6.py-10.bg-white.shadow-xl.rounded-2xl.mt-3
+  h1.text-4xl.font-bold.mb-6 New Project
+
+  = render "form", project: @project
+
+  = link_to "← Back to projects", projects_path, class: "inline-block mt-6 text-sm text-blue-600 hover:text-blue-800"
