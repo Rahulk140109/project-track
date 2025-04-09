@@ -4,3 +4,5 @@
 
 import { application } from "./application"
 
+import ProjectEventsController from "./project_events_controller"
+application.register("project-events", ProjectEventsController)

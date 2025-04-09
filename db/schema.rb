@@ -10,9 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_05_063821) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_05_094007) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "comment_events", force: :cascade do |t|
+    t.text "body"
+    t.jsonb "metadata", default: {}
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "project_events", force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.bigint "user_id", null: false
+    t.string "eventable_type", null: false
+    t.bigint "eventable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["eventable_type", "eventable_id"], name: "index_project_events_on_eventable"
+    t.index ["project_id"], name: "index_project_events_on_project_id"
+    t.index ["user_id"], name: "index_project_events_on_user_id"
+  end
 
   create_table "projects", force: :cascade do |t|
     t.string "title"
@@ -22,6 +41,14 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_05_063821) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_projects_on_user_id"
+  end
+
+  create_table "status_change_events", force: :cascade do |t|
+    t.string "from_status"
+    t.string "to_status"
+    t.jsonb "metadata", default: {}
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -41,5 +68,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_05_063821) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "project_events", "projects"
+  add_foreign_key "project_events", "users"
   add_foreign_key "projects", "users"
 end

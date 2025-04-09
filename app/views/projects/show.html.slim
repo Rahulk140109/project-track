@@ -28,3 +28,4 @@
     = link_to "⬅️ Back", projects_path, class: "rounded-md px-4 py-2 bg-gray-100 text-gray-700 hover:bg-gray-200 text-sm font-semibold transition"
     = button_to "🗑️ Delete", @project, method: :delete, data: { confirm: "Are you sure?" }, class: "rounded-md px-4 py-2 bg-red-600 text-white hover:bg-red-500 text-sm font-semibold transition"
 
+  .project_events#project-events-list data-controller="project-events" data-project-events-project-id-value=@project.id
