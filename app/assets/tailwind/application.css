@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+@layer components {
+  .form-control {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-md bg-gray-50 placeholder-gray-400 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition text-sm;
+  }
+}
