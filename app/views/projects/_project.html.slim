@@ -1,0 +1,16 @@
+div id=dom_id(project)
+  .my-5
+    strong.block.font-medium.mb-1 Title:
+    = project.title
+
+  .my-5
+    strong.block.font-medium.mb-1 Description:
+    = project.description
+
+  .my-5
+    strong.block.font-medium.mb-1 Status:
+    span.inline-block.rounded-md.bg-gray-100.text-sm.px-2.5.py-1.font-medium.text-gray-700 = project.status.to_s.titleize
+
+  .my-5
+    strong.block.font-medium.mb-1 Owner:
+    = project.user&.email || "N/A"

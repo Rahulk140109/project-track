@@ -1,0 +1,22 @@
+= form_with(model: project, class: "space-y-6") do |f|
+  - if project.errors.any?
+    .bg-red-100.border.border-red-300.text-red-800.p-4.rounded
+      h2.font-semibold= "#{pluralize(project.errors.count, 'error')} prohibited this project from being saved:"
+      ul.list-disc.list-inside.mt-2
+        - project.errors.full_messages.each do |message|
+          li= message
+
+  .space-y-1
+    = f.label :title, class: "block font-medium text-gray-700"
+    = f.text_field :title, class: form_input_class(project, :title)
+
+  .space-y-1
+    = f.label :description, class: "block font-medium text-gray-700"
+    = f.text_area :description, rows: 4, class: form_input_class(project, :description)
+
+  .space-y-1
+    = f.label :status, class: "block font-medium text-gray-700"
+    = f.select :status, Project.statuses.keys.map { |s| [s.titleize, s] }, {}, class: form_input_class(project, :status)
+
+
+  = f.submit "Save Project", class: "inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-500 font-medium"
