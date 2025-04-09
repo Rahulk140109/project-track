@@ -26,6 +26,6 @@
   .mt-10.flex.flex-wrap.gap-3
     = link_to "✏️ Edit", edit_project_path(@project), class: "rounded-md px-4 py-2 bg-indigo-100 text-indigo-700 hover:bg-indigo-200 text-sm font-semibold transition"
     = link_to "⬅️ Back", projects_path, class: "rounded-md px-4 py-2 bg-gray-100 text-gray-700 hover:bg-gray-200 text-sm font-semibold transition"
-    = button_to "🗑️ Delete", @project, method: :delete, data: { confirm: "Are you sure?" }, class: "rounded-md px-4 py-2 bg-red-600 text-white hover:bg-red-500 text-sm font-semibold transition"
+    = button_to "🗑️ Delete", @project, method: :delete, data: { confirm: "Are you sure?" }, class: "rounded-md px-4 py-2 bg-red-600 text-white hover:bg-red-500 text-sm font-semibold transition cursor-pointer"
 
   .project_events#project-events-list data-controller="project-events" data-project-events-project-id-value=@project.id
