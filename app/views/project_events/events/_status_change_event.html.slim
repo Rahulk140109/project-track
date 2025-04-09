@@ -1,0 +1,7 @@
+p.text-gray-700.mt-2
+  span.me-2 Status changed
+  - if eventable.from_status?
+    span from
+    span.mx-2 = status_badge(eventable.from_status)
+  span to
+  span.mx-2 = status_badge(eventable.to_status)

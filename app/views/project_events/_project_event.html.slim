@@ -9,14 +9,4 @@
 
     span.inline-block.text-xs.font-semibold.rounded.bg-gray-100.text-gray-600.px-2.py-1 = type.titleize
 
-  - if type == "CommentEvent"
-    p.text-gray-700.mt-2 = eventable.body
-
-  - elsif type == "StatusChangeEvent"
-    p.text-gray-700.mt-2
-      span.me-2 Status changed
-      - if eventable.from_status?
-        span from
-        span.mx-2 = status_badge(eventable.from_status)
-      span to
-      span.mx-2 = status_badge(eventable.to_status)
+  = render event_partial(type), eventable: eventable

@@ -1,5 +1,5 @@
 = form_for([@project, CommentEvent.new]) do |f|
   .space-y-2
-    = f.text_area :body, rows: 4, class: "w-full rounded-md border border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-base text-gray-900"
+    = f.text_area :body, rows: 4, class: "w-full rounded-md border p-2 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-base text-gray-900"
 
-  = submit_tag "💬 Post Comment", class: "bg-indigo-600 text-white px-5 py-2.5 rounded-md hover:bg-indigo-500 text-sm font-semibold transition"
+  = submit_tag "💬 Post Comment", class: "bg-indigo-600 text-white px-5 py-2.5 rounded-md hover:bg-indigo-500 text-sm font-semibold transition cursor-pointer"

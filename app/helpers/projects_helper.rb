@@ -19,4 +19,9 @@ module ProjectsHelper
     status_sym = status.to_s.downcase.to_sym
     content_tag :span, status.to_s.titleize, class: "#{base_classes} #{color_classes[status_sym] || 'bg-gray-100 text-gray-800'}"
   end
+
+
+  def event_partial(type)
+    "project_events/events/" + type.to_s.titleize.gsub(" ", "_").downcase
+  end
 end
