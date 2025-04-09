@@ -1,0 +1,22 @@
+.bg-white.shadow-sm.rounded-xl.p-5.mb-4
+  - user = event.user
+  - type = event.eventable_type.demodulize
+  - eventable = event.eventable
+  .flex.justify-between.items-start
+    .flex.items-center.space-x-3
+      div.font-medium.text-gray-800 = user.email
+      span.text-sm.text-gray-500 = time_ago_in_words(event.created_at) + ' ago'
+
+    span.inline-block.text-xs.font-semibold.rounded.bg-gray-100.text-gray-600.px-2.py-1 = type.titleize
+
+  - if type == "CommentEvent"
+    p.text-gray-700.mt-2 = eventable.body
+
+  - elsif type == "StatusChangeEvent"
+    p.text-gray-700.mt-2
+      span.me-2 Status changed
+      - if eventable.from_status?
+        span from
+        span.mx-2 = status_badge(eventable.from_status)
+      span to
+      span.mx-2 = status_badge(eventable.to_status)

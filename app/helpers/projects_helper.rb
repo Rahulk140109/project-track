@@ -13,7 +13,7 @@ module ProjectsHelper
       pending:  "bg-yellow-100 text-yellow-800",
       active:   "bg-blue-100 text-blue-800",
       archived: "bg-gray-300 text-gray-700",
-      completed:"bg-green-100 text-green-800"
+      completed: "bg-green-100 text-green-800"
     }
 
     status_sym = status.to_s.downcase.to_sym

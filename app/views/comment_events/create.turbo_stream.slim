@@ -1,0 +1,5 @@
+= turbo_stream.prepend "timeline-#{@project.id}" do
+  = render "project_events/project_event", event: @event
+
+= turbo_stream.update "event-form-#{@project.id}" do
+  = render "project_events/form", project: @project
