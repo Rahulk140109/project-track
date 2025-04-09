@@ -1,0 +1,33 @@
+.section.min-h-screen.bg-gray-100.flex.items-center.justify-center.p-4
+  .bg-white.shadow-lg.rounded-xl.p-8.w-full.max-w-md
+    h2.text-3xl.font-bold.text-center.text-gray-900.mb-2
+      | Welcome back
+    p.text-center.text-gray-500.mb-6
+      | Sign in to your account
+
+    - if alert.present?
+      p.bg-red-100.text-red-700.text-sm.text-center.font-medium.p-2.rounded.mb-4= alert
+
+    = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "space-y-5" }) do |f|
+      = render "devise/shared/error_messages", resource: resource
+
+      .space-y-2
+        = f.label :email, class: "block text-sm font-medium text-gray-700"
+        = f.email_field :email, class: "form-control", placeholder: "you@example.com", required: true
+
+      .space-y-2
+        = f.label :password, class: "block text-sm font-medium text-gray-700"
+        = f.password_field :password, class: "form-control", placeholder: "••••••••", required: true
+
+      - if devise_mapping.rememberable?
+        .flex.items-center.gap-2
+          = f.check_box :remember_me, class: "rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+          = f.label :remember_me, class: "text-sm text-gray-600"
+
+      = f.submit "Sign In", class: "btn-primary w-full mt-4"
+
+    .text-center.text-sm.text-gray-600.mt-6
+      | Don’t have an account?
+      = link_to "Sign up", new_registration_path(resource_name), class: "ms-2 text-indigo-600 hover:underline font-medium"
+
+    = render "devise/shared/links"
